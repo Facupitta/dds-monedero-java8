@@ -1,0 +1,13 @@
+1)  Lo que indica cuantos depositos por dia se pueden hacer esta hardcodeado (repetidas veces), lo mismo para
+    el importe maximo de las extracciones.
+
+2)  Los movimientos tienen un tipo de logica distinta dependiendo de su tipo y se valida mediante uso de ifs.
+
+3)  Los metodos de los movimientos utilizan los atributos calculados sin usar los getters, cosa que puede traer
+    problemas si dejan de ser atributos en el futuro.
+
+4)  El metodo getMontoExtraido conoce mas de lo que deberia a los movimientos, esta muy acoplado.
+
+5) La logica que calcula los limites podria ser delegada en otro/s metodo/s.
+
+6) Es responsabilidad del movimiento quitarle/agregarle saldo a la cuenta?
