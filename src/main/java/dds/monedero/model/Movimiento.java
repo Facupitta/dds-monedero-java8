@@ -17,16 +17,16 @@ public abstract class Movimiento {
   }
 
   public boolean esDeLaFecha(LocalDate fecha) {
-    return this.fecha.equals(fecha);
+    return this.getFecha().equals(fecha);
   }
 
   public boolean extraccionDeFecha(LocalDate fecha) {
-    return !this.isDeposito() && this.getFecha().equals(fecha);
+    return !this.isDeposito() && this.esDeLaFecha(fecha);
   }
 
-  public abstract void agregateA(Cuenta cuenta);
-
-  public abstract double calcularValor(Cuenta cuenta);
+  public boolean depositoDeHoy() {
+    return this.isDeposito() && this.esDeLaFecha(LocalDate.now());
+  }
 
   public abstract boolean isDeposito();
 

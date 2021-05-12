@@ -32,7 +32,8 @@ public class Cuenta {
     validarMontoPositivo(cuanto);
     validarCantidadDepositos();
 
-    new Deposito(LocalDate.now(), cuanto).agregateA(this);
+    this.agregarDeposito(new Deposito(LocalDate.now(), cuanto));
+    this.saldo += cuanto;
   }
 
   public void sacar(double cuanto) {
@@ -40,7 +41,8 @@ public class Cuenta {
     validarMontoExtraccionMenorASaldo(cuanto);
     validarMontoExtraccionMenorALimite(cuanto);
 
-    new Extraccion(LocalDate.now(), cuanto).agregateA(this);
+    this.agregarExtraccion(new Extraccion(LocalDate.now(), cuanto));
+    this.saldo -= cuanto;
   }
 
   public double montoExtraidoHoy() {
@@ -48,7 +50,7 @@ public class Cuenta {
   }
 
   public long cantidadDepositosHoy() {
-    return this.getMovimientos().stream().filter(movimiento -> movimiento.isDeposito()).count();
+    return this.getMovimientos().stream().filter(movimiento -> movimiento.depositoDeHoy()).count();
   }
 
   public void validarMontoPositivo(double monto) {
@@ -77,13 +79,11 @@ public class Cuenta {
     }
   }
 
-  public void agregarExtraccion(LocalDate fecha, double cuanto) {
-    Extraccion extraccion = new Extraccion(fecha, cuanto);
+  public void agregarExtraccion(Extraccion extraccion) {
     movimientos.add(extraccion);
   }
 
-  public void agregarDeposito(LocalDate fecha, double cuanto) {
-    Deposito deposito = new Deposito(fecha, cuanto);
+  public void agregarDeposito(Deposito deposito) {
     movimientos.add(deposito);
   }
 
