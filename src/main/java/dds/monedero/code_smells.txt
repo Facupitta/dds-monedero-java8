@@ -6,7 +6,7 @@
 3)  Los metodos de los movimientos utilizan los atributos calculados sin usar los getters, cosa que puede traer
     problemas si dejan de ser atributos en el futuro.
 
-4)  El metodo getMontoExtraido conoce mas de lo que deberia a los movimientos, esta muy acoplado.
+4)  El metodo getMontoExtraidoA conoce mas de lo que deberia a los movimientos, esta muy acoplado.
 
 5) La logica que calcula los limites podria ser delegada en otro/s metodo/s.
 
